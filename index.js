@@ -1,4 +1,3 @@
-// обозначила все нужные переменные 
 let popupElement = document.querySelector('.popup');
 let popupOpenButton = document.querySelector('.profile__edit-button');
 let popupCloseButton = popupElement.querySelector('.popup__close-button');
@@ -9,7 +8,6 @@ let professionInput = formElement.querySelector('.popup__person_profession');
 let profileName = document.querySelector('.profile__name');
 let profileProfession = document.querySelector('.profile__profession');
 
-// Открытие попапа
 let popupOpen = function(){
     popupElement.classList.add('popup_opened');
     nameInput.value = profileName.textContent;
@@ -17,7 +15,6 @@ let popupOpen = function(){
 }
 popupOpenButton.addEventListener('click', popupOpen);
 
-// Закрытие попапа
 let popupClose = function(){
     popupElement.classList.remove('popup_opened');
 }
