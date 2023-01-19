@@ -16,54 +16,54 @@
           <img class="profile__avatar" src="./images/jacques-yves_cousteau.jpg" alt="Фото Жак-Ив Кусто">
           <div class="profile__info">
             <div class="profile__title">
-              <p class="profile__name">Жак-Ив Кусто</p>
-              <button class="profile__edit-button"></button>
+              <h1 class="profile__name">Жак-Ив Кусто</h1>
+              <button class="profile__edit-button" type="button"></button>
             </div>
-            <p class="profile__profession">Исследователь океана</p>
+            <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__add-button"></button>
+          <button class="profile__add-button" type="submit"></button>
         </section>
         <section class="elements">
           <article class="element">
             <img class="element__picture" src="./images/ekaterinburg.jpg" alt="Екатеринбург">
             <div class="element__group">
               <h2 class="element__title">Екатеринбург</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__picture" src="./images/sochi.jpg" alt="Сочи">
             <div class="element__group">
               <h2 class="element__title">Сочи</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__picture" src="./images/vladivostok.jpg" alt="Владивосток">
             <div class="element__group">
               <h2 class="element__title">Владивосток</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__picture" src="./images/kaliningrad.jpg" alt="Калининград">
             <div class="element__group">
               <h2 class="element__title">Калининград</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div> 
           </article>
           <article class="element">
             <img class="element__picture" src="./images/moscow.jpg" alt="Москва">
             <div class="element__group">
               <h2 class="element__title">Москва</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div>
           </article>
           <article class="element">
             <img class="element__picture" src="./images/kazan.jpg" alt="Казань">
             <div class="element__group">
               <h2 class="element__title">Казань</h2>
-              <button class="element__button"></button>
+              <button class="element__button" type="button"></button>
             </div>
           </article>
         </section>
@@ -74,17 +74,17 @@
     </div>
     <div class="popup">
       <div class="popup__window">
-        <button class="popup__close-button"></button>
-        <section class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <form class="popup__field">
-            <input class="popup__person popup__person_name" type="text" name="name" id="name" required placeholder="Жак-Ив Кусто">
-            <input class="popup__person popup__person_profession" type="text" name="profession" id="profession" required placeholder="Исследователь океана">
+        <button class="popup__close-button" type="button"></button>
+        <div class="popup__container">
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <form class="popup__field" name="form-about">
+            <input class="popup__person popup__person_about_name" type="text" name="name" id="name" required placeholder="Жак-Ив Кусто">
+            <input class="popup__person popup__person_about_job" type="text" name="job" id="job" required placeholder="Исследователь океана">
             <button class="popup__save-button" type="submit">Сохранить</button>
           </form>
-        </section>
+        </div>
       </div>
     </div>
-    <script src="index.js"></script>
+    <script src="./scripts/index.js"></script>
   </body>
 </html>

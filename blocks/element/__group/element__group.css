@@ -1,12 +1,7 @@
 .element__group {
     margin: 0;
-    padding: 25px 15px 31px 20px;
+    max-width: 241px;
+    padding: 25px 20px 25px 21px;
     display: flex;
     justify-content: space-between;
-}
-
-@media screen and (max-width: 425px) {
-    .element__group {
-        padding-left: 21px;
-    }
 }
