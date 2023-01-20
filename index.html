@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="./pages/index.css">
     <title>Mesto Russia</title>
   </head>
-  <body>
+  <body class="page">
     <div class="page">
       <header class="header">
         <img class="header__logo" src="./images/header__logo.svg" alt="Логотип проекта">
@@ -21,7 +21,7 @@
             </div>
             <p class="profile__job">Исследователь океана</p>
           </div>
-          <button class="profile__add-button" type="submit"></button>
+          <button class="profile__add-button" type="button"></button>
         </section>
         <section class="elements">
           <article class="element">
@@ -73,16 +73,14 @@
       </footer>
     </div>
     <div class="popup">
-      <div class="popup__window">
+      <div class="popup__container">
         <button class="popup__close-button" type="button"></button>
-        <div class="popup__container">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <form class="popup__field" name="form-about">
-            <input class="popup__person popup__person_about_name" type="text" name="name" id="name" required placeholder="Жак-Ив Кусто">
-            <input class="popup__person popup__person_about_job" type="text" name="job" id="job" required placeholder="Исследователь океана">
-            <button class="popup__save-button" type="submit">Сохранить</button>
-          </form>
-        </div>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <form class="popup__field" name="form-about">
+          <input class="popup__person popup__person_about_name" type="text" name="name" id="name" required placeholder="Жак-Ив Кусто">
+          <input class="popup__person popup__person_about_job" type="text" name="job" id="job" required placeholder="Исследователь океана">
+          <button class="popup__save-button" type="submit">Сохранить</button>
+        </form>
       </div>
     </div>
     <script src="./scripts/index.js"></script>

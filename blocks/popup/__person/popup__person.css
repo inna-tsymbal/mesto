@@ -1,4 +1,10 @@
 .popup__person {
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
     margin: 0;
     padding: 0;
     width: 358px;
@@ -6,15 +12,6 @@
     border: 0;
     border-bottom: 1px solid rgba(0, 0, 0, .2);
     box-sizing: border-box;
-}
-
-.popup__person::placeholder {
-    font-family: 'Inter', Arial, sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 17px;
-    color: #000;
 }
 
 @media screen and (max-width: 550px) {
