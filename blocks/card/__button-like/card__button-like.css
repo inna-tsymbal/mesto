@@ -1,4 +1,4 @@
-.element__button {
+.card__button-like {
     width: 22px;
     height: 19px;
     background-color: #fff;
@@ -9,16 +9,10 @@
     border: none;
     padding: 0;
     margin: 0;
-    align-self: flex-end;
+    align-self: center;
 }
 
-.element__button:active {
-    background-image: url('../../../images/element__button_active.svg');
-    opacity: 1;
-    transition: opacity 0.4s;
-}
-
-.element__button:hover {
+.card__button-like:hover {
     opacity: 0.6;
     cursor: pointer;
     transition: opacity 0.4s;

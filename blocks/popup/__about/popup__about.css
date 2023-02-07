@@ -1,4 +1,4 @@
-.popup__person {
+.popup__about {
     font-family: 'Inter', Arial, sans-serif;
     font-style: normal;
     font-weight: 400;
@@ -15,7 +15,7 @@
 }
 
 @media screen and (max-width: 550px) {
-    .popup__person {
+    .popup__about {
         width: 238px;
     }
 }
