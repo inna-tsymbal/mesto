@@ -27,9 +27,9 @@
         <template id="card">
           <article class="card">
             <button class="card__trash" type="button"></button>
-            <img class="card__image">
+            <img class="card__image" src="#" alt="#">
             <div class="card__group">
-              <p class="card__title"></p>
+              <h3 class="card__title"></h3>
               <button class="card__button-like" type="button"></button>
             </div>
           </article>
@@ -43,7 +43,7 @@
   <div class="popup popup_image">
     <div class="popup__container popup__container_image">
       <button class="popup__close-button popup__close-button_image" type="button"></button>
-      <img class="popup__picture">
+      <img class="popup__picture" src="#" alt="#">
       <p class="popup__picture-title"></p>
     </div>
   </div>
@@ -52,7 +52,7 @@
       <button class="popup__close-button popup__close-button_card" type="button"></button>
       <h3 class="popup__title popup__title_card">Новое место</h3>
       <form class="popup__field popup__field_card" name="form-card">
-        <input class="popup__about popup__about_card_name" type="text" name="name" id="name" required placeholder="Название">
+        <input class="popup__about popup__about_card_name" type="text" name="title" id="title" required placeholder="Название">
         <input class="popup__about popup__about_card_link" type="text" name="link" id="link" required placeholder="Ссылка на картинку">
         <button class="popup__save-button popup__save-button_card" type="submit">Создать</button>
       </form>
