@@ -1,6 +1,5 @@
 .popup__container_image {
-    max-width: 75vw;
-    max-height: 75vh;
+    width: max-content;
     margin-top: 90px;
     background-color: transparent;
     border-radius: 0;
