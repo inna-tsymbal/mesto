@@ -1,4 +1,4 @@
-.card__trash {
+.card__delete {
     width: 18px;
     height: 19px;
     background-color: transparent;
@@ -13,7 +13,7 @@
     top: 20px; 
 }
 
-.card__trash:hover {
+.card__delete:hover {
     opacity: 0.6;
     cursor: pointer;
     transition: opacity 0.4s;
