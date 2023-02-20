@@ -20,3 +20,6 @@
     }
 }
 
+.form__input:focus {
+    outline: none;
+}
