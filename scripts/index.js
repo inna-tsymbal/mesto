@@ -20,6 +20,7 @@ const popupCloseButtonCard = popupCard.querySelector(
 const formCard = popupCard.querySelector(".form_card");
 const formInputCardName = formCard.querySelector(".form__input_card_name");
 const formInputCardLink = formCard.querySelector(".form__input_card_link");
+const formButtonCard = formCard.querySelector(".form__button_card");
 
 // переменные попапа картинки
 const popupImage = document.querySelector(".popup_image");
@@ -54,6 +55,7 @@ function openPopup(popup) {
 // функция закрытия попапа
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  popup.removeEventListener("mousedown", closePopupMouse);
   document.removeEventListener("keydown", closePopupEsc);
 }
 
@@ -89,6 +91,7 @@ function closeProfilePopup() {
 // функция открытия попапа карточки
 function openCardPopup() {
   openPopup(popupCard);
+  formButtonCard.classList.add("form__button_disabled");
 }
 
 //функция закрытия попапа карточки
