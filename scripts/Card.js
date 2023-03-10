@@ -7,25 +7,18 @@ export default class Card {
   }
   // клонирование разметки карточки
   _getTemplate() {
-    const cardAll = document
+    const cardElement = document
       .querySelector(this._templateSelector)
       .content.querySelector(".card")
       .cloneNode(true);
 
-    return cardAll;
+    return cardElement;
   }
-  // наполнение разметки карточки
-  generateCard() {
-    this._element = this._getTemplate();
-    this._setEventListeners();
-    this._element.querySelector(".card__image").src = this._link;
-    this._element.querySelector(".card__image").alt = this._name;
-    this._element.querySelector(".card__title").textContent = this._name;
-    return this._element;
-  }
-
+  
   // обработчики
   _setEventListeners() {
+    this._image = this._element.querySelector(".card__image");
+
     this._element
       .querySelector(".card__button-like")
       .addEventListener("click", (evt) => {
@@ -38,10 +31,20 @@ export default class Card {
         this._element.remove();
       });
 
-    this._element
-      .querySelector(".card__image")
+      this._image
       .addEventListener("click", () => {
         this._openImagePopup(this._link, this._name);
       });
   }
+
+  // наполнение разметки карточки
+  generateCard() {
+    this._element = this._getTemplate();
+    this._setEventListeners();
+    this._image.src = this._link;
+    this._image.alt = this._name;
+    this._element.querySelector(".card__title").textContent = this._name;
+    return this._element;
+  }
+
 }

@@ -24,7 +24,7 @@ const formCard = popupCard.querySelector(".form_card");
 const formInputCardName = formCard.querySelector(".form__input_card_name");
 const formInputCardLink = formCard.querySelector(".form__input_card_link");
 const formButtonCard = formCard.querySelector(".form__button_card");
-
+const popupContainetCard = document.querySelector(".popup__container_card"); 
 // переменные попапа картинки
 const popupImage = document.querySelector(".popup_image");
 const popupCloseButtonImage = popupImage.querySelector(
@@ -79,6 +79,7 @@ function openProfilePopup() {
   openPopup(popupProfile);
   formInputProfileName.value = profileName.textContent;
   formIntupProfileJob.value = profileJob.textContent;
+  formProfileValidation.resetError();
 }
 
 // функция закрытия попапа профиля
@@ -89,7 +90,10 @@ function closeProfilePopup() {
 // функция открытия попапа карточки
 function openCardPopup() {
   openPopup(popupCard);
-  formButtonCard.classList.add("form__button_disabled");
+  formCardValidation.resetError();
+  formInputCardName.value = '';
+  formInputCardLink.value = '';
+
 }
 
 //функция закрытия попапа карточки
@@ -111,9 +115,7 @@ function closeImagePopup() {
 }
 
 initialCards.forEach((item) => {
-  const card = new Card(item, "#card", openImagePopup);
-  const elementCard = card.generateCard();
-  document.querySelector(".cards").prepend(elementCard);
+  document.querySelector(".cards").prepend(createCopyCard(item));
 });
 
 // функция отправки формы профиля
@@ -131,11 +133,14 @@ function handleFormSubmitCard(evt) {
     name: formInputCardName.value,
     link: formInputCardLink.value,
   };
-  const card = new Card(newCard, "#card", openImagePopup);
-  const elementCard = card.generateCard();
-  document.querySelector(".cards").prepend(elementCard);
+  document.querySelector(".cards").prepend(createCopyCard(newCard));
   closeCardPopup();
   evt.target.reset();
+}
+
+function createCopyCard(item) {
+  const card = new Card(item, "#card", openImagePopup);
+  return card.generateCard();
 }
 
 // ОБРАБОТЧИКИ

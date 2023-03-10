@@ -2,7 +2,6 @@
     position: relative;
     width: 430px;
     min-height: 330px;
-    margin: 195px auto 0;
     background-color: #fff;
     color: #000;
     border-radius: 8px;
@@ -13,7 +12,6 @@
     .popup__container {
         width: 282px;
         min-height: 322px;
-        margin-top: 123px;
     }
 }
 .popup__container:hover{
