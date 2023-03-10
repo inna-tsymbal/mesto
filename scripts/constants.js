@@ -1,4 +1,4 @@
-export const config = [
+export const config = 
     {
         formSelector: ".form",
         inputSelector: ".form__input",
@@ -6,8 +6,8 @@ export const config = [
         inactiveButtonClass: "form__button_disabled",
         inputErrorClass: "form__input_type_error",
         errorInput: "form__input-error_active",
-      }
-]
+      };
+      
 
 // массив карточек 
  export const initialCards = [
