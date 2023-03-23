@@ -1,14 +1,19 @@
-export const config = {
-  formSelector: ".form",
+const formProfile = document.querySelector(".form_profile");
+const formCard = document.querySelector(".form_card");
+const profileEditButton = document.querySelector(".profile__edit-button");
+const profileAddButton = document.querySelector(".profile__add-button");
+
+
+const config = {
+  formSelector: ".form", // возможно это не надо
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
   inputErrorClass: "form__input_type_error",
-  errorInput: "form__input-error_active",
+  errorInput: "form__input-error_active", // это тоже может не надо
 };
 
-// массив карточек
-export const initialCards = [
+const initialCards = [
   {
     name: "Архыз",
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
@@ -34,3 +39,7 @@ export const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+
+export { config, initialCards, formProfile,  formCard, profileEditButton, profileAddButton } 
+
+
