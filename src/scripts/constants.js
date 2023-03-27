@@ -3,14 +3,13 @@ const formCard = document.querySelector(".form_card");
 const profileEditButton = document.querySelector(".profile__edit-button");
 const profileAddButton = document.querySelector(".profile__add-button");
 
-
 const config = {
-  formSelector: ".form", // возможно это не надо
+  formSelector: ".form",
   inputSelector: ".form__input",
   submitButtonSelector: ".form__button",
   inactiveButtonClass: "form__button_disabled",
   inputErrorClass: "form__input_type_error",
-  errorInput: "form__input-error_active", // это тоже может не надо
+  errorInput: "form__input-error_active",
 };
 
 const initialCards = [
@@ -40,6 +39,11 @@ const initialCards = [
   },
 ];
 
-export { config, initialCards, formProfile,  formCard, profileEditButton, profileAddButton } 
-
-
+export {
+  config,
+  initialCards,
+  formProfile,
+  formCard,
+  profileEditButton,
+  profileAddButton,
+};
