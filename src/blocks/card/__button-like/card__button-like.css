@@ -7,9 +7,8 @@
     background-repeat: no-repeat;
     background-position: center;
     border: none;
-    padding: 0;
-    margin: 0;
     align-self: center;
+    padding: 0;
 }
 
 .card__button-like:hover {

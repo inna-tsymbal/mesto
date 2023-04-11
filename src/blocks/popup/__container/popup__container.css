@@ -14,6 +14,7 @@
         min-height: 322px;
     }
 }
+
 .popup__container:hover{
     cursor: default;
 }

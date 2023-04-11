@@ -29,6 +29,7 @@
     "webpack-dev-server": "^4.13.1"
   },
   "dependencies": {
-    "core-js": "^3.29.1"
+    "core-js": "^3.29.1",
+    "live-server": "^1.2.2"
   }
 }

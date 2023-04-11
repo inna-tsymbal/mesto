@@ -1,0 +1,7 @@
+@media screen and (max-width: 550px) {
+    .form__button_delete {
+        width: 238px;
+        min-height: 46px;
+        margin: auto 22px;
+    }
+}
