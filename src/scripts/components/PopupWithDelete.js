@@ -23,7 +23,7 @@ export default class PopupWithDelete extends Popup {
   };
 
   setEventListeners = () => {
-    const buttonDeleteCard = this._popup.querySelector(".form__button_delete");
+    const buttonDeleteCard = this._popup.querySelector(".popup__delete-button");
     buttonDeleteCard.addEventListener("click", () => {
       this._deleteCard(this._idCard);
       this._card.remove();
