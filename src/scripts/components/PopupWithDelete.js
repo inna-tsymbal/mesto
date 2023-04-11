@@ -1,4 +1,4 @@
-import Popup from './Popup.js';
+import Popup from "./Popup.js";
 
 export default class PopupWithDelete extends Popup {
   constructor(popupSelector, api) {
@@ -13,19 +13,18 @@ export default class PopupWithDelete extends Popup {
   }
 
   _deleteCard = () => {
-    this.close()
+    this.close();
     this._api
       .deleteCard(this._idCard)
-      .then(() => {
-      })
+      .then(() => {})
       .catch((err) => {
         console.log(err);
-    });
+      });
   };
 
   setEventListeners = () => {
-    const buttonDeleteCard = this._popup.querySelector('.form__button_delete');
-    buttonDeleteCard.addEventListener('click', () => {
+    const buttonDeleteCard = this._popup.querySelector(".form__button_delete");
+    buttonDeleteCard.addEventListener("click", () => {
       this._deleteCard(this._idCard);
       this._card.remove();
     });

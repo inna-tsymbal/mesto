@@ -1,5 +1,6 @@
 .card__number-like {
-    font-family: Inter;
+    font-family: 'Inter', Arial, sans-serif;
+    font-style: normal;
     font-size: 13px;
     line-height: 16px;
     color: #000;

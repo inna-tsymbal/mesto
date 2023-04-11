@@ -22,7 +22,6 @@ import Api from "../scripts/components/Api.js";
 let userId;
 let cardsList;
 
-
 const userInfo = new UserInfo({
   nameSelector: ".profile__name",
   aboutSelector: ".profile__job",
@@ -66,20 +65,60 @@ function initialSection({ items, renderer }, containerSelector) {
   return arrayObjectsDataCards;
 }
 
-
 Promise.all([api.getUserInfo(), api.getInitialCards()])
-.then(([userData, cards]) => {
-  userId = userData._id;
-  userInfo.setUserInfo({
-    name: userData.name,
-    job: userData.about,
-    avatar: userData.avatar,
-  });
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo({
+      name: userData.name,
+      job: userData.about,
+      avatar: userData.avatar,
+    });
     cardsList = initialSection(
       {
-      items: cards,
-      renderer: (item) => {
-        const card = createCard({
+        items: cards,
+        renderer: (item) => {
+          const card = createCard(
+            {
+              data: {
+                link: item.link,
+                name: item.name,
+                likes: item.likes,
+                owner: item.owner._id,
+                id: item._id,
+              },
+              handleCardClick: (evt) => {
+                popupWithImage.open(evt.target.src, evt.target.alt);
+              },
+              handleLikeClick: () => {},
+              handleDeleteIconClick: (card) => {
+                const idCard = item._id;
+                popupWithDelete.open(idCard, card);
+                popupWithDelete.setEventListeners();
+              },
+            },
+            "#card-template",
+            api,
+            userId
+          );
+          const cardElement = card.generateCard();
+          cardsList.addItem(cardElement);
+        },
+      },
+      ".cards"
+    );
+    cardsList.renderItems();
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+
+// ОТПРАВКА ФОРМЫ КАРТОЧКИ
+const handleFormSubmitCard = (data) => {
+  api
+    .postNewCard(data)
+    .then((item) => {
+      const newCard = createCard(
+        {
           data: {
             link: item.link,
             name: item.name,
@@ -89,53 +128,13 @@ Promise.all([api.getUserInfo(), api.getInitialCards()])
           },
           handleCardClick: (evt) => {
             popupWithImage.open(evt.target.src, evt.target.alt);
-          }, 
-          handleLikeClick: () => {}, 
+          },
+          handleLikeClick: () => {},
           handleDeleteIconClick: (card) => {
-            const idCard = item._id;
-            popupWithDelete.open(idCard, card);
+            popupWithDelete.open(item._id, card);
             popupWithDelete.setEventListeners();
           },
         },
-          "#card-template",
-          api,
-          userId
-        );
-        const cardElement = card.generateCard();
-        cardsList.addItem(cardElement);
-      },
-    },
-    ".cards"
-    );
-    cardsList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-});
-
-
-// ОТПРАВКА ФОРМЫ КАРТОЧКИ
-const handleFormSubmitCard = (data) => {
-  api
-    .postNewCard(data)
-    .then((item) => {
-      const newCard = createCard({
-        data: {
-          link: item.link,
-          name: item.name,
-          likes: item.likes,
-          owner: item.owner._id,
-          id: item._id,
-        },
-        handleCardClick: (evt) => {
-          popupWithImage.open(evt.target.src, evt.target.alt);
-        }, 
-        handleLikeClick: () => {}, 
-        handleDeleteIconClick: (card) => {
-          popupWithDelete.open(item._id, card);
-          popupWithDelete.setEventListeners();
-        },
-      },
         "#card-template",
         api,
         userId
@@ -172,7 +171,6 @@ const handleFormSubmitProfile = (data) => {
     });
 };
 
-
 // ОТПРАВКА ФОРМЫ АВАТАРА
 const handleFormSubmitAvatar = (data) => {
   api
@@ -183,7 +181,7 @@ const handleFormSubmitAvatar = (data) => {
         job: res.about,
         avatar: res.avatar,
       });
-      openPopupAvatar.close()
+      openPopupAvatar.close();
     })
     .catch((err) => {
       console.log(err);
@@ -193,10 +191,11 @@ const handleFormSubmitAvatar = (data) => {
     });
 };
 
-
-
 // ПОПАП ПРОФИЛЯ
-const openPopupProfile = new PopupWithForm(".popup_profile", handleFormSubmitProfile);
+const openPopupProfile = new PopupWithForm(
+  ".popup_profile",
+  handleFormSubmitProfile
+);
 openPopupProfile.setEventListeners();
 
 // ПОПАП КАРТОЧКИ
@@ -204,35 +203,34 @@ const openPopupCard = new PopupWithForm(".popup_card", handleFormSubmitCard);
 openPopupCard.setEventListeners();
 
 // ПОПАП АВАТАРА
-const openPopupAvatar = new PopupWithForm(".popup_avatar", handleFormSubmitAvatar);
-openPopupAvatar.setEventListeners()
+const openPopupAvatar = new PopupWithForm(
+  ".popup_avatar",
+  handleFormSubmitAvatar
+);
+openPopupAvatar.setEventListeners();
 
 // ПОПАП БОЛЬШОЙ КАРТИНКИ
 const popupWithImage = new PopupWithImage(".popup_image");
 popupWithImage.setEventListeners();
 
-
-function handleAddButtonClick() { 
-  formCardValidation.resetError(); 
-  openPopupCard.open(); 
-} 
-profileAddButton.addEventListener("click", handleAddButtonClick); 
- 
-function handleEditButtonClick() { 
-  openPopupProfile.setInputValues(userInfo.getUserInfo()); 
-  formProfileValidation.resetError(); 
-  openPopupProfile.open(); 
-} 
-profileEditButton.addEventListener("click", handleEditButtonClick); 
-
-
-function handleProfileOverlayClick() { 
-  formAvatarValidation.resetError(); 
-  openPopupAvatar.open(); 
+function handleAddButtonClick() {
+  formCardValidation.resetError();
+  openPopupCard.open();
 }
-profileOverlay.addEventListener("click", handleProfileOverlayClick); 
+profileAddButton.addEventListener("click", handleAddButtonClick);
 
+function handleEditButtonClick() {
+  openPopupProfile.setInputValues(userInfo.getUserInfo());
+  formProfileValidation.resetError();
+  openPopupProfile.open();
+}
+profileEditButton.addEventListener("click", handleEditButtonClick);
 
+function handleProfileOverlayClick() {
+  formAvatarValidation.resetError();
+  openPopupAvatar.open();
+}
+profileOverlay.addEventListener("click", handleProfileOverlayClick);
 
 // валидация всех форм
 const formProfileValidation = new FormValidator(config, formProfile);

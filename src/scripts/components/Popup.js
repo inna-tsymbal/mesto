@@ -18,8 +18,8 @@ export default class Popup {
     if (evt.key === "Escape") {
       this.close();
     }
-  }
-  
+  };
+
   setEventListeners() {
     this._popup.addEventListener("mousedown", (evt) => {
       if (evt.target.classList.contains("popup_opened")) {
