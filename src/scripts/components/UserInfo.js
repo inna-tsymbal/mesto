@@ -9,6 +9,7 @@ export default class UserInfo {
     return {
       name: this._name.textContent,
       job: this._about.textContent,
+      avatar: this._avatar.src,
     };
   }
 

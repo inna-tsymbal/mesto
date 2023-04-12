@@ -10,26 +10,18 @@ export default class PopupWithForm extends Popup {
     this._formButtonText = this._formButton.textContent;
   }
 
-  _getInputValues() {
-    const inputsValues = {};
-    this._inputs.forEach((input) => {
-      inputsValues[input.name] = input.value;
-    });
+  _getInputValues() { 
+    const inputsValues = {}; 
+    this._inputs.forEach((input) => { 
+      inputsValues[input.name] = input.value; 
+    }); 
     return inputsValues;
   }
 
-  setInputValues(data) {
-    this._inputs.forEach((input) => {
-      input.value = data[input.name];
-    });
-  }
-
-  isLoad(isLoading) {
-    if (isLoading === true) {
-      this._formButton.textContent = "Сохранение...";
-    } else {
-      this._formButton.textContent = this._formButtonText;
-    }
+  setInputValues(data) { 
+    this._inputs.forEach((input) => { 
+      input.value = data[input.name]; 
+    }); 
   }
 
   close() {
@@ -37,13 +29,19 @@ export default class PopupWithForm extends Popup {
     super.close();
   }
 
+  renderLoading(isLoading) {
+    if (isLoading) {
+      this._formButton.textContent = "Сохранение...";
+    } else {
+      this._formButton.textContent = this._formButtonText;
+    }
+  }
+
   setEventListeners() {
+    super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-      this.isLoad(true);
-      this.close();
     });
-    super.setEventListeners();
   }
 }
