@@ -4,7 +4,7 @@ export default class Popup {
     this._popupButtonClose = this._popup.querySelector(".popup__close-button");
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
     }

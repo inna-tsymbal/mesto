@@ -98,7 +98,8 @@ const popupCard = new PopupWithForm(".popup_card", (formData) => {
   api
     .postNewCard(formData)
     .then((data) => {
-      cardsSection.addItem(data);
+      cardsSection.prependItem(createCard(data));
+      console.log(data);
       popupCard.close();
     })
     .catch((err) => {
@@ -141,7 +142,6 @@ const createCard = (data) => {
             .putLikeCard(data._id)
             .then((data) => {
               card.updateData(data);
-              card.updateLikesView();
             })
             .catch((err) => {
               console.log(err);
@@ -151,7 +151,6 @@ const createCard = (data) => {
             .deleteLikeCard(data._id)
             .then((data) => {
               card.updateData(data);
-              card.updateLikesView();
             })
             .catch((err) => {
               console.log(err);
@@ -163,7 +162,10 @@ const createCard = (data) => {
   return card.generateCard();
 }
 
-const cardsSection = new Section((cardItem) => createCard(cardItem), ".cards");
+const cardsSection = new Section({
+  renderer: (item) => cardsSection.prependItem(createCard(item))
+},
+   ".cards");
 
 
 formProfileValidation.enableValidation();
@@ -174,6 +176,7 @@ popupConfirm.setEventListeners();
 popupWithImage.setEventListeners();
 popupProfile.setEventListeners();
 popupAvatar.setEventListeners();
+popupCard.setEventListeners();
 
 profileAddButton.addEventListener("click", () => {
   formCardValidation.resetError();

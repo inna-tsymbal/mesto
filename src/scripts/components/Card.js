@@ -22,6 +22,7 @@ export default class Card {
 
   updateData(newData) {
     this._likes = newData.likes;
+    this.updateLikesView();
   }
 
   updateLikesView() {
@@ -72,13 +73,10 @@ export default class Card {
     this._elementTitle.textContent = this._name;
     this._elementImage.src = this._link;
     this._elementImage.alt = this._name;
-    this._elementNumberLike.textContent = this._likes.length;
     if (this._ownerId !== this._userId) {
       this._elementDelete.classList.add('card__delete_inactive');
     }
-    if(this.isLiked()) {
-      this._elementButtonLike.classList.add('card__button-like_active');
-    }
+    this.updateLikesView();
     this._setEventListeners();
     return this._element;
   }
